@@ -11,7 +11,6 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: linear-gradient(to bottom right, #1e3c72, #2a5298, #6a11cb, #2575fc);
 }
 body::-webkit-scrollbar { display: none; }
 
@@ -157,21 +156,40 @@ main {
   width: calc(100% - 40px);
   margin: 20px auto;
   background: rgba(0,0,0,0.45);
-  padding: 20px; border-radius: 15px;
+  padding: 20px; 
+  border-radius: 15px;
   box-shadow: 0 8px 15px rgba(0,0,0,0.6);
-  min-width: 300px; text-align: left;
+  min-width: 300px; 
+  text-align: left;
   animation: slideUp 1s ease;
 }
-.forecast-container h2 { margin: 0 0 10px; }
-.forecast-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-  gap: 15px; margin: 15px;
+
+.forecast-container h2 {
+  margin: 0 0 15px;
+  font-size: 22px;
+  font-weight: bold;
+  color: #fff;
+  position: relative; /* stays in place */
 }
+
+.forecast-scroll {
+  overflow-x: auto;   /* only cards scroll */
+  padding-bottom: 10px;
+}
+
+.forecast-cards {
+  display: flex; 
+  gap: 15px;
+}
+
 .forecast-card {
+  min-width: 120px;
   background: rgba(255,255,255,0.12);
-  border-radius: 10px; padding: 12px; text-align: center;
+  border-radius: 10px; 
+  padding: 12px; 
+  text-align: center;
   transition: transform 0.3s ease, background 0.3s ease;
+  flex-shrink: 0; /* prevents shrinking in scroll */
 }
 .forecast-card:hover {
   transform: translateY(-5px);
@@ -180,6 +198,8 @@ main {
 .forecast-card i { font-size: 30px; margin: 8px 0; color: #ffffff; }
 .forecast-card .date { font-weight: bold; margin-bottom: 5px; }
 .forecast-card .temp { font-size: 18px; font-weight: bold; }
+
+.forecast-scroll::-webkit-scrollbar { display: none; } /* hide scrollbar */
 
 /* =========================
    Sky + Weather Effects
@@ -291,12 +311,13 @@ main {
   .search { width: 100%; justify-content: flex-start; margin-top: 10px; }
   .container,.graphs { width: 95%; margin: 0 auto; }
   .forecast-container {
-    width: 95%; margin: 15px auto;
+    width: 95%; margin: 10px 10px;
     overflow-x: auto; overflow-y: hidden;
   }
   .forecast-cards {
     display: flex; margin: 0 10px; gap: 15px;
     flex-wrap: nowrap; min-width: max-content;
   }
+  .forecast-cards::-webkit-scrollbar { display: none; }
   .location-btn .btn-text { display: none; }
 }
