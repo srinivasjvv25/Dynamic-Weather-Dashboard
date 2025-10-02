@@ -189,7 +189,7 @@ main {
   padding: 12px; 
   text-align: center;
   transition: transform 0.3s ease, background 0.3s ease;
-  flex-shrink: 0; /* prevents shrinking in scroll */
+  flex-shrink: 0; 
 }
 .forecast-card:hover {
   transform: translateY(-5px);
@@ -312,7 +312,6 @@ main {
   .container,.graphs { width: 95%; margin: 0 auto; }
   .forecast-container {
     width: 95%; margin: 10px 10px;
-    overflow-x: auto; overflow-y: hidden;
   }
   .forecast-cards {
     display: flex; margin: 0 10px; gap: 15px;
