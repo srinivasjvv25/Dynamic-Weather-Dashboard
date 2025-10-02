@@ -1,0 +1,302 @@
+/* =========================
+   General Styles
+========================= */
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  text-align: center;
+  color: white;
+  transition: background 1s ease-in-out;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(to bottom right, #1e3c72, #2a5298, #6a11cb, #2575fc);
+}
+body::-webkit-scrollbar { display: none; }
+
+/* =========================
+   Header
+========================= */
+.header {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  padding: 15px 20px;
+  backdrop-filter: blur(8px);
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+  z-index: 10;
+}
+.logo { font-size: 22px; letter-spacing: 1px; cursor: pointer; }
+
+.search {
+  display: flex; align-items: center; gap: 8px;
+  flex-wrap: wrap; justify-content: flex-end;
+}
+.search input {
+  padding: 8px 12px; border-radius: 8px; border: none; outline: none;
+  transition: box-shadow 0.3s ease;
+}
+.search input:focus { box-shadow: 0 0 8px #00c6ff; }
+.search button {
+  padding: 8px 12px; border: none; border-radius: 8px; cursor: pointer;
+  background: #fff; font-weight: bold; transition: all 0.3s ease;
+}
+.search button:hover { background: #00c6ff; color: white; }
+.location-btn { margin-right: 30px; }
+
+/* =========================
+   Main Layout
+========================= */
+main {
+  margin-top: 90px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main-row {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.container {
+  width: 45%; max-width: 400px;
+  background: rgba(0,0,0,0.45);
+  padding: 20px; 
+  border-radius: 15px;
+  box-shadow: 0 8px 15px rgba(0,0,0,0.6);
+  text-align: center; 
+  animation: fadeIn 1s ease;
+  flex: 1;
+}
+
+/* =========================
+   Weather Card
+========================= */
+.weather-card { margin: 20px 0; }
+.icon-temp { display: flex; justify-content: center; align-items: center; }
+#weatherIcon { font-size: 52px; margin-right: 10px; color: #ffffff; }
+#temperature { font-size: 42px; font-weight: bold; }
+
+/* Extra Info */
+.extra-info {
+  text-align: left; margin-top: 20px; line-height: 1.8; font-size: 20px;
+}
+.extra-info i { margin-right: 6px; color: #ffffff; }
+
+/* Progress Bar */
+.progress-bar {
+  width: 100%; background: rgba(255,255,255,0.2);
+  border-radius: 10px; height: 8px; margin: 10px 0;
+}
+#sunProgress {
+  background: linear-gradient(to right, yellow, orange);
+  height: 100%; border-radius: 10px; width: 50%;
+  transition: width 1s ease-in-out;
+}
+
+/* Advice */
+.advice {
+  margin-top: 15px; padding: 12px; border-radius: 10px;
+  background: rgba(255,255,255,0.15);
+  font-weight: bold; font-size: 14px;
+  font-size: large;
+  transition: all 0.4s ease;
+}
+
+/* =========================
+   Graphs
+========================= */
+.graphs {
+  flex: 1;
+  min-width: 300px;
+  width: 55%;
+  background: rgba(0, 0, 0, 0.45);
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 8px 15px rgba(0,0,0,0.6);
+  color: whitesmoke;
+  animation: fadeIn 1s ease;
+}
+
+.chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#toggleBtn {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 8px;
+  background: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+#toggleBtn:hover { background: #00c6ff; color: white; }
+
+/* =========================
+   Forecast
+========================= */
+.forecast-container {
+  width: calc(100% - 40px);
+  margin: 20px auto;
+  background: rgba(0,0,0,0.45);
+  padding: 20px; border-radius: 15px;
+  box-shadow: 0 8px 15px rgba(0,0,0,0.6);
+  min-width: 300px; text-align: left;
+  animation: slideUp 1s ease;
+}
+.forecast-container h2 { margin: 0 0 10px; }
+.forecast-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 15px; margin: 15px;
+}
+.forecast-card {
+  background: rgba(255,255,255,0.12);
+  border-radius: 10px; padding: 12px; text-align: center;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+.forecast-card:hover {
+  transform: translateY(-5px);
+  background: rgba(255,255,255,0.25);
+}
+.forecast-card i { font-size: 30px; margin: 8px 0; color: #ffffff; }
+.forecast-card .date { font-weight: bold; margin-bottom: 5px; }
+.forecast-card .temp { font-size: 18px; font-weight: bold; }
+
+/* =========================
+   Sky + Weather Effects
+========================= */
+.sky {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  overflow: hidden; z-index: -1;
+  background: linear-gradient(to bottom, #87ceeb, #f0f8ff);
+  transition: background 1.5s ease-in-out;
+}
+
+/* Sun */
+.sun {
+  position: absolute; top: 60px; left: 80px;
+  width: 80px; height: 80px; background: yellow; border-radius: 50%;
+  box-shadow: 0 0 40px rgba(255, 223, 0, 0.8);
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Moon */
+.moon {
+  position: absolute; top: 70px; left: 100px;
+  width: 60px; height: 60px; border-radius: 50%;
+  background: #ddd; box-shadow: inset -10px -10px 0 0 #aaa;
+  display: none; animation: float 8s ease-in-out infinite;
+}
+
+/* Stars */
+.stars {
+  position: absolute; 
+  width: 2px; height: 2px; 
+  background: white; border-radius: 50%; 
+  animation: twinkle 2s infinite; 
+  z-index: 1;
+}
+
+/* Clouds */
+.cloud { position: absolute; background: #fff; border-radius: 50%; opacity: 0.8; }
+.cloud1 { width: 120px; height: 70px; top: 100px; left: -150px; animation: cloudMove 50s linear infinite; }
+.cloud2 { width: 150px; height: 90px; top: 200px; left: -200px; animation: cloudMove 70s linear infinite; }
+
+/* Rain Drops */
+.rain {
+  position: absolute;
+  top: 0; left: 0;
+  width: 2px; height: 15px;
+  background: rgba(255, 255, 255, 0.8);
+  opacity: 0.5;
+  animation: fall linear infinite;
+}
+
+/* Lightning */
+.lightning {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(255,255,255,0.6);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 999;
+  animation: lightningFlash 5s infinite;
+}
+
+/* Snowflakes */
+.snowflake {
+  position: absolute;
+  top: -10px;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.8;
+  pointer-events: none;
+  z-index: 1;
+  animation: fall linear infinite;
+}
+
+/* =========================
+   Animations
+========================= */
+@keyframes fadeIn { from { opacity: 0; transform: translateY(15px);} to {opacity:1; transform:translateY(0);} }
+@keyframes slideUp { from { opacity:0; transform:translateY(30px);} to{opacity:1; transform:translateY(0);} }
+@keyframes float { 0%,100%{ transform: translateY(0);} 50%{ transform: translateY(-15px);} }
+@keyframes cloudMove { 0%{transform:translateX(0);} 100%{transform:translateX(120vw);} }
+@keyframes twinkle { 0%{opacity:0.6;} 100%{opacity:1;} }
+@keyframes fall {
+  0% { transform: translateY(-20px); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateY(100vh); opacity: 0; }
+}
+@keyframes lightningFlash {
+  0%, 95%, 100% { opacity: 0; }
+  96% { opacity: 0.8; }
+  97% { opacity: 0.4; }
+  98% { opacity: 1; }
+}
+
+/* =========================
+   Responsive
+========================= */
+@media (max-width: 900px) {
+  .main-row { flex-direction: column; align-items: center; }
+  .container, .graphs { width: 90%; max-width: none; }
+  .forecast-container { width: 90%; }
+  .forecast-cards { display: flex; overflow-x: auto; }
+}
+.forecast-cards::-webkit-scrollbar { display: none; }
+
+@media (max-width: 600px) {
+  .header { flex-direction: column; align-items: flex-start; }
+  .search { width: 100%; justify-content: flex-start; margin-top: 10px; }
+  .container,.graphs { width: 95%; margin: 0 auto; }
+  .forecast-container {
+    width: 95%; margin: 15px auto;
+    overflow-x: auto; overflow-y: hidden;
+  }
+  .forecast-cards {
+    display: flex; margin: 0 10px; gap: 15px;
+    flex-wrap: nowrap; min-width: max-content;
+  }
+  .location-btn .btn-text { display: none; }
+}
