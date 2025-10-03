@@ -27,6 +27,10 @@ async function getWeather() {
 
 // 📍 Auto get location weather
 window.onload = getLocationWeather;
+document.getElementById("homeLogo").addEventListener("click", () => {
+  window.location.href = "index.html"; // Redirect explicitly to index.html
+});
+
 function getLocationWeather() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(async (pos) => {
