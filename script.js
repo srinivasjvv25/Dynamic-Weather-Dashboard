@@ -27,9 +27,11 @@ async function getWeather() {
 
 // 📍 Auto get location weather
 window.onload = getLocationWeather;
+// Reload to Home when "Weather Dashboard" logo is clicked
 document.getElementById("homeLogo").addEventListener("click", () => {
   window.location.href = "index.html"; // Redirect explicitly to index.html
 });
+
 
 function getLocationWeather() {
   if (navigator.geolocation) {
